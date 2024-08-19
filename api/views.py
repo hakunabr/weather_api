@@ -9,6 +9,8 @@ from django.conf import settings
 @api_view(['GET'])
 def weather_view(request):
     city_name = request.query_params.get('city_name')
+    if not city_name:
+        return Response({'error': 'city_name query parameter is required'}, status=400)
     coords = get_city_coords(city_name)
     return get_weather_info(coords)
 
