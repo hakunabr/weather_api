@@ -1,8 +1,7 @@
-from rest_framework.routers import DefaultRouter
+from .views import weather_view
 from django.urls import path, include 
 
-router = DefaultRouter()
 
 urlpatterns = [
-    path('', include(router.urls))
+    path('weather/', weather_view, name='weather_view'),
 ]
